@@ -163,3 +163,27 @@ document.body.appendChild(style);
 
 // Create particles periodically
 setInterval(createFloatingParticle, 3000);
+
+document.addEventListener("DOMContentLoaded", function () {
+  fetch("/products")
+    .then((response) => response.json())
+    .then((products) => {
+      const container = document.querySelector(".products-grid");
+
+      products.forEach((product) => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <div class="product-image">${product.image}</div>
+          <div class="product-info">
+            <h3 class="product-title">${product.title}</h3>
+            <p class="product-description">${product.description}</p>
+            <div class="product-price">$${product.price}</div>
+            <button class="product-button">Add to Cart</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    })
+    .catch((error) => console.error("Error fetching products:", error));
+});

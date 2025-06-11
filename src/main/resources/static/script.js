@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="product-info">
             <h3 class="product-title">${product.title}</h3>
             <p class="product-description">${product.description}</p>
-            <div class="product-price">$${product.price}</div>
+            <div class="product-price">₹${product.price}</div>
             <button class="product-button">Add to Cart</button>
           </div>
         `;

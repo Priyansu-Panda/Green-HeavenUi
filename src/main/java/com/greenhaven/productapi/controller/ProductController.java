@@ -29,16 +29,17 @@ public class ProductController {
         return productRepo.save(product);   // saves the entity
     }
 
-    @GetMapping("/{id}")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product newProduct){
+    @PutMapping("/{id}")
+    public Product updateProduct(@PathVariable Long id, @RequestBody Product newProduct) {
         return productRepo.findById(id).map(product -> {
-        product.setTitle(newProduct.getTitle());
-        product.setDescription(newProduct.getDescription());
-        product.setPrice(newProduct.getPrice());
-        product.setImage(newProduct.getImage());
-        return productRepo.save(product);
-    }).orElse(null);
+            product.setTitle(newProduct.getTitle());
+            product.setDescription(newProduct.getDescription());
+            product.setPrice(newProduct.getPrice());
+            product.setImage(newProduct.getImage());
+            return productRepo.save(product);
+        }).orElse(null);
     }
+
 
     @DeleteMapping("/{id}")
     public boolean deleteProduct(@PathVariable Long id){
